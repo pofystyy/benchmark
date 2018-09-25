@@ -1,11 +1,14 @@
 require "benchmark"
 
 module Benchmark
-  def benchmark(method)
-    define_method "#{method}" do
+  def self.included(base)
+    base.extend(ClassBenchmark)
+  end
+
+  module ClassBenchmark
+    def benchmark(method)
       time = Benchmark.measure { method }
-      p "#{method}"
-      p time.real
+      p time.total
     end
   end
 end

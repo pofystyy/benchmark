@@ -1,7 +1,12 @@
 require_relative "benchmark"
 
 class Test
-  extend Benchmark
+  include Benchmark
+
+  def a
+    sleep 10
+    p 'a'
+  end
 
   def b
     p 'b'
