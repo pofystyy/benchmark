@@ -7,8 +7,8 @@ module Benchmark
 
   module ClassBenchmark
     def benchmark(method)
-      time = Benchmark.measure { method }
-      p time.total
+      time = Benchmark.realtime { method }
+      p time
     end
   end
 end
