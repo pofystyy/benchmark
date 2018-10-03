@@ -7,9 +7,9 @@ module Benchmark
 
   module ClassBenchmark
     def benchmark(met)
-      alias_method "new_#{met}", met
+      alias_method "_#{met}", met
       define_method met do
-        p time = Benchmark.realtime { send "new_#{met}" }
+        p Benchmark.realtime { send "_#{met}" }
       end
     end
   end
